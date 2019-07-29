@@ -12,15 +12,18 @@ import time
 
 servoYPIN = 17
 servoXPIN = 4
+xPos = 7.5
+yPos = 7.5
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servoYPIN, GPIO.OUT)
 GPIO.setup(servoXPIN, GPIO.OUT)
 
 y = GPIO.PWM(servoYPIN, 50) # GPIO 17 for PWM with 50Hz
-y.start(5) # Initialization
+y.start(yPos) # Initialization
 
 x = GPIO.PWM(servoXPIN, 50) # GPIO 17 for PWM with 50Hz
-x.start(5) # Initialization
+x.start(xPos) # Initialization
+
 
 def main(stdscr):
     """checking for keypress"""
@@ -37,16 +40,24 @@ try:
         print(user_input, left)
         if (user_input == left) :
             print("Go left")
-            x.ChangeDutyCycle(5)
+            if (xPos < 12.5) :
+                xPos += .5
+                x.ChangeDutyCycle(xPos)
         if (user_input == right) :
             print("Go right")
-            x.ChangeDutyCycle(10)
+            if (xPos > 2.5) :
+                xPos -= .5
+                x.ChangeDutyCycle(xPos)
         if (user_input == up) :
             print("Go up")
-            y.ChangeDutyCycle(10)
+            if (yPos < 12.5) :
+                yPos += .5
+                y.ChangeDutyCycle(yPos)
         if (user_input == down) :
             print("Go down")
-            y.ChangeDutyCycle(5)
+            if (yPos > 2.5) :
+                yPos -= .5
+                y.ChangeDutyCycle(yPos)
 
         time.sleep(.1)
 
