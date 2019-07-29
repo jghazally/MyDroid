@@ -10,8 +10,8 @@ import curses, time
 import RPi.GPIO as GPIO
 import time
 
-servoYPIN = 23
-servoXPIN = 24
+servoYPIN = 4
+servoXPIN = 17
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servoYPIN, GPIO.OUT)
 GPIO.setup(servoXPIN, GPIO.OUT)
