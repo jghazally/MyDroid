@@ -1,9 +1,9 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
-GPIO.setmore(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
 
-Motor1 = 3
+Motor1 = 18
 
 GPIO.setup(Motor1, GPIO.OUT)
 
